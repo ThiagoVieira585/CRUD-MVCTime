@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Menu</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/cadastrar">Cadastrar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/time/listar">Lista</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+	<table class="table table-sm">
+  		<thead>
+  			<tr>
+  				<th scope="col">ID</th>
+  				<th scope="col">Nome</th>
+		  		<th scope="col">Ano de Fundação</th>
+		  		<th scope="col">Série</th>
+		  		<th scope="col">Títulos</th>
+		  	</tr>
+ 		 </thead>
+  		<tbody>
+  			<tr th:each = "time: ${lista}">
+  				<td th:text="${time.id}"></td>
+  				<td th:text="${time.nome}"></td>
+  				<td th:text="${time.anoFundacao}"></td>
+  				<td th:text="${time.serie}"></td>
+  				<td th:text="${time.titulos}"></td>
+  				<td> <a th:href="@{/time/excluir/{id}(id = ${time.id})}" class="btn btn-danger"> Excluir </a></td>
+  			</tr>
+  		</tbody>
+	</table>
+
+<script src="/js/boootstrap.min.js"></script>
+</body>
+</html>
